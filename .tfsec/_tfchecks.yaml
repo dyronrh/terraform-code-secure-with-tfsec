@@ -1,0 +1,20 @@
+---
+checks:
+- code: CUS001
+  description: Custom check to ensure the CostCentre tag is applied to Postgres server
+  impact: By not having CostCentre we can't keep track of billing
+  resolution: Add the CostCentre tag
+  requiredTypes:
+  - resource
+  requiredLabels:
+  - azurerm_postgresql_server
+  severity: ERROR
+  matchSpec:
+    name: tags
+    action: contains
+    value: CostCentre
+  matchSpec:
+    name: tags
+    action: contains
+    value: Environment
+  errorMessage: The required CostCentre,Environment tags was missing

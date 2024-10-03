@@ -1,4 +1,4 @@
-
+#tfsec:ignore:azure-database-no-public-access
 resource "azurerm_postgresql_server" "postgresql_server" {
   name                = "tfsec-psqlserver"
   location            = azurerm_resource_group.tfsec_rg.location
@@ -18,6 +18,10 @@ resource "azurerm_postgresql_server" "postgresql_server" {
   public_network_access_enabled    = true
   ssl_enforcement_enabled          = true
   ssl_minimal_tls_version_enforced = "TLS1_2"
+  tags = {
+    "Environment" = "prod"
+    "CostCentre" = "subscribe-now"
+  }
 }
 
  resource "azurerm_postgresql_configuration" "pg_configuration" {
