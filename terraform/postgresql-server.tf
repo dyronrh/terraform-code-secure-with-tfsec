@@ -1,4 +1,4 @@
-#tfsec:ignore:azure-database-no-public-access
+
 resource "azurerm_postgresql_server" "postgresql_server" {
   name                = "tfsec-psqlserver"
   location            = azurerm_resource_group.tfsec_rg.location
